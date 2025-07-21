@@ -148,7 +148,7 @@ export default function Home() {
           Informatics Engineering | Politeknik Negeri Jakarta
         </p>
            <p className="text-lg md:text-xl font-medium text-gray-700 dark:text-gray-300">
-         Mobile Developer Cohort| Bangkit Academy led by Google, Tokopedia, Gojek, & Traveloka
+         Mobile Developer Cohort | Bangkit Academy led by Google, Tokopedia, Gojek, & Traveloka
         </p>
         
       </section>
