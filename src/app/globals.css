@@ -1,8 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Light Mode */
+  --background: #fdfdfe; /* Very subtle off-white */
+  --foreground: #212529; /* Dark charcoal for text */
+  --accent: #20c997; /* Vibrant teal/green */
+  --card-background: #ffffff;
+  --card-shadow: rgba(0, 0, 0, 0.05);
 }
 
 @theme inline {
@@ -14,13 +18,42 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Dark Mode */
+    --background: #1a1a1a; /* Dark grey */
+    --foreground: #e9ecef; /* Light grey for text */
+    --accent: #2ecc71; /* Slightly brighter green for dark mode contrast */
+    --card-background: #2c2c2c;
+    --card-shadow: rgba(0, 0, 0, 0.3);
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', 'Arial', sans-serif; /* Prefer Inter if available, otherwise Arial */
+  transition: background 0.3s ease, color 0.3s ease; /* Smooth transition for dark mode */
+}
+
+/* Optional: Add a custom font import if you want to use 'Inter' */
+/* You might need to add this to your layout.tsx or a global import */
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap'); */
+
+/* Global styles for headings and paragraphs for consistency */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--foreground);
+}
+
+p {
+  color: var(--foreground);
+  line-height: 1.7; /* Improve readability */
+}
+
+a {
+  color: var(--accent);
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--accent); /* Maintain color, but maybe add underline or different effect */
+  text-decoration: underline;
 }
