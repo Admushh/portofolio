@@ -10,7 +10,7 @@ const allProjects = [
   {
     id: 1,
     title: "LokaTrack",
-    description: "Developed Lokatrack, an Android application for Lokatani's logistic system, which track vegetable delivery status using OCR-based order id scanning and AI model processing to detect whether the hand signature is real or faked. Built using Kotlin, integrating both AI models and API services through API",
+    description: "Developed Lokatrack, an Android application for Lokatanis logistic system, which track vegetable delivery status using OCR-based order id scanning and AI model processing to detect whether the hand signature is real or faked. Built using Kotlin, integrating both AI models and API services through API",
     demoLink: "#",
     repoLink: "#"
   },
@@ -142,13 +142,13 @@ export default function Home() {
 
         <h1 className="text-4xl md:text-5xl font-extrabold mb-3 leading-tight"
             style={{ color: 'var(--foreground)' }}>
-          Hi, I'm <span className="text-accent">Adimas Farhan Putranto</span>
+          Hi, Im <span className="text-accent">Adimas Farhan Putranto</span>
         </h1>
         <p className="text-lg md:text-xl font-medium text-gray-700 dark:text-gray-300">
           Informatics Engineering | Politeknik Negeri Jakarta
         </p>
            <p className="text-lg md:text-xl font-medium text-gray-700 dark:text-gray-300">
-         Mobile Developer Cohort | Bangkit Academy led by Google, Tokopedia, Gojek, & Traveloka
+         Mobile Developer Cohort| Bangkit Academy led by Google, Tokopedia, Gojek, & Traveloka
         </p>
         
       </section>
@@ -158,7 +158,7 @@ export default function Home() {
                style={{ backgroundColor: 'var(--card-background)', boxShadow: `0 8px 24px var(--card-shadow)` }}>
         <h2 className="text-3xl font-bold mb-5" style={{ color: 'var(--foreground)' }}>About Me</h2>
         <p className="text-base md:text-lg" style={{ color: 'var(--foreground)' }}>
-          I'm a passionate developer with a strong focus on building intuitive and performant web and mobile applications. My journey involves crafting delightful user experiences and solving real-world challenges through elegant code. I thrive on learning new technologies and constantly pushing the boundaries of what's possible.
+          Im a passionate developer with a strong focus on building intuitive and performant web and mobile applications. My journey involves crafting delightful user experiences and solving real-world challenges through elegant code. I thrive on learning new technologies and constantly pushing the boundaries of whats possible.
         </p>
       </section>
 
