@@ -11,22 +11,22 @@ const allProjects = [
     id: 1,
     title: "LokaTrack",
     description: "Developed Lokatrack, an Android application for Lokatanis logistic system, which track vegetable delivery status using OCR-based order id scanning and AI model processing to detect whether the hand signature is real or faked. Built using Kotlin, integrating both AI models and API services through API",
-    demoLink: "#",
-    repoLink: "#"
+
+    repoLink: "https://github.com/OneWizzard/LokaFresh"
   },
   {
     id: 2,
     title: "Nutrigood",
     description: "Developed NutriGood, an Android-based mobile application focused on promoting healthy living and nutrition tracking. Responsible for designing UI, implementing core features using Kotlin, and integrating backend API services also integrating AI models through API services.",
-    demoLink: "#",
-    repoLink: "#"
+
+    repoLink: "https://github.com/Admushh/NutriGoods"
   },
    {
     id: 3,
     title: "Manchester United Gallery Web",
     description: "Manchester United Gallery Web is an interactive fan-made website dedicated to celebrating the rich legacy of Manchester United Football Club. This project showcases the club’s historical milestones, legendary players, and iconic moments through a visually engaging gallery format.",
-    demoLink: "#",
-    repoLink: "#"
+
+    repoLink: "https://github.com/Admushh/Bismillah"
   },
  
   
@@ -130,7 +130,7 @@ export default function Home() {
     <main className="min-h-screen px-4 py-12 md:px-8 lg:px-16 max-w-6xl xl:max-w-7xl 2xl:max-w-8xl mx-auto">
       {/* Hero Section */}
       <section className="text-center mb-24">
-        <div className="relative mx-auto rounded-full w-32 h-32 md:w-40 md:h-40 overflow-hidden mb-6 border-4 border-accent shadow-lg">
+        <div className="relative mx-auto rounded-full w-50 h-50 md:w-40 md:h-40 overflow-hidden mb-6 border-4 border-accent shadow-lg">
           <Image
             src="/profil.jpg"
             alt="Foto Adimas"
@@ -195,15 +195,7 @@ export default function Home() {
     </div>
     
     <div className="flex flex-wrap gap-4 mt-auto">
-      {project.demoLink ? (
-        <a href={project.demoLink} className="inline-block px-5 py-2 rounded-lg text-white font-semibold whitespace-nowrap" style={{ backgroundColor: 'var(--accent)' }} target="_blank" rel="noopener noreferrer">
-          View Demo
-        </a>
-      ) : (
-        <span className="inline-block px-5 py-2 rounded-lg font-semibold text-gray-400 border border-gray-300 dark:border-gray-600 cursor-not-allowed">
-          No Demo
-        </span>
-      )}
+
       {project.repoLink ? (
         <a href={project.repoLink} className="inline-block px-5 py-2 rounded-lg font-semibold border-2 border-accent whitespace-nowrap" style={{ color: 'var(--accent)' }} target="_blank" rel="noopener noreferrer">
           GitHub
@@ -319,11 +311,14 @@ export default function Home() {
         <p className="mb-3 text-lg">
           Have an exciting project or just want to connect? Feel free to reach out!
         </p>
-        <p className="mb-2">
+        <p>
           Email: <a className="text-accent font-semibold hover:underline" href="mailto:admsfarhan@gmail.com">admsfarhan@gmail.com</a>
         </p>
         <p>
           LinkedIn: <a className="text-accent font-semibold hover:underline" href="https://www.linkedin.com/in/adimas-farhan-76797824b/" target="_blank" rel="noopener noreferrer">linkedin.com/adimasfarhan</a>
+        </p>
+          <p>
+          Github: <a className="text-accent font-semibold hover:underline" href="https://github.com/Admushh/" target="_blank" rel="noopener noreferrer">https://github.com/Admushh</a>
         </p>
       </section>
 
