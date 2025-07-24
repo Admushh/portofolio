@@ -2,8 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-// IMPORT BARU DARI FRAMER MOTION
-import { motion, AnimatePresence } from "framer-motion"; 
+import { motion, AnimatePresence } from "framer-motion";
 
 // Data Proyekmu
 const allProjects = [
@@ -11,25 +10,20 @@ const allProjects = [
     id: 1,
     title: "LokaTrack",
     description: "Developed Lokatrack, an Android application for Lokatanis logistic system, which track vegetable delivery status using OCR-based order id scanning and AI model processing to detect whether the hand signature is real or faked. Built using Kotlin, integrating both AI models and API services through API",
-
     repoLink: "https://github.com/OneWizzard/LokaFresh"
   },
   {
     id: 2,
     title: "Nutrigood",
     description: "Developed NutriGood, an Android-based mobile application focused on promoting healthy living and nutrition tracking. Responsible for designing UI, implementing core features using Kotlin, and integrating backend API services also integrating AI models through API services.",
-
     repoLink: "https://github.com/Admushh/NutriGoods"
   },
-   {
+  {
     id: 3,
     title: "Manchester United Gallery Web",
     description: "Manchester United Gallery Web is an interactive fan-made website dedicated to celebrating the rich legacy of Manchester United Football Club. This project showcases the club’s historical milestones, legendary players, and iconic moments through a visually engaging gallery format.",
-
     repoLink: "https://github.com/Admushh/Bismillah"
   },
- 
-  
 ];
 
 // Data Skillmu
@@ -72,7 +66,7 @@ const allCertificates = [
     image: "/sertif4.jpg",
     verifyLink: "https://www.example.com/verify/cert101"
   },
-    {
+  {
     id: 5,
     name: "Kepersertaan dan kelulusan program Studi Independen",
     image: "/sertif5.jpg",
@@ -82,19 +76,18 @@ const allCertificates = [
 
 export default function Home() {
   const [startIndex, setStartIndex] = useState(0);
-  // TAMBAH: State untuk melacak arah animasi
-  const [direction, setDirection] = useState(0); // 0 = none, 1 = next, -1 = prev
+  const [direction, setDirection] = useState(0);
 
   const projectsPerPage = 3;
   const totalProjects = allProjects.length;
 
   const handleNext = () => {
-    setDirection(1); // Set arah ke "maju"
+    setDirection(1);
     setStartIndex((prevIndex) => (prevIndex + projectsPerPage) % totalProjects);
   };
 
   const handlePrev = () => {
-    setDirection(-1); // Set arah ke "mundur"
+    setDirection(-1);
     setStartIndex((prevIndex) =>
       (prevIndex - projectsPerPage + totalProjects) % totalProjects
     );
@@ -105,32 +98,34 @@ export default function Home() {
     visibleProjects.push(allProjects[(startIndex + i) % totalProjects]);
   }
 
-  // Definisikan varian animasi untuk Framer Motion
   const cardVariants = {
-    // initial (kondisi awal saat masuk)
-    // Gunakan 'direction' untuk menentukan dari mana gesernya
     enter: (direction: number) => ({
-      x: direction > 0 ? 1000 : -1000, // Jika next (1), dari kanan. Jika prev (-1), dari kiri.
+      x: direction > 0 ? "100%" : "-100%",
       opacity: 0,
     }),
-    // animate (kondisi saat aktif)
     center: {
       x: 0,
       opacity: 1,
     },
-    // exit (kondisi saat keluar)
-    // Gunakan 'direction' untuk menentukan ke mana gesernya
     exit: (direction: number) => ({
-      x: direction < 0 ? 1000 : -1000, // Jika prev (-1), ke kanan. Jika next (1), ke kiri.
+      x: direction < 0 ? "100%" : "-100%",
       opacity: 0,
     }),
   };
+
+  // textVariants can be simplified or removed if transition is inline
+  // const textVariants = {
+  //   hidden: { opacity: 0, y: 20 },
+  //   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  // };
+
 
   return (
     <main className="min-h-screen px-4 py-12 md:px-8 lg:px-16 max-w-6xl xl:max-w-7xl 2xl:max-w-8xl mx-auto">
       {/* Hero Section */}
       <section className="text-center mb-24">
-        <div className="relative mx-auto rounded-full w-50 h-50 md:w-40 md:h-40 overflow-hidden mb-6 border-4 border-accent shadow-lg">
+        {/* UKURAN PROFILE IMAGE Disesuaikan & Tambah Animasi Halo */}
+        <div className="relative mx-auto rounded-full w-40 h-40 md:w-48 md:h-48 overflow-hidden mb-6 border-4 border-accent shadow-xl animate-halo-pulse">
           <Image
             src="/profil.jpg"
             alt="Foto Adimas"
@@ -140,17 +135,35 @@ export default function Home() {
           />
         </div>
 
-        <h1 className="text-4xl md:text-5xl font-extrabold mb-3 leading-tight"
-            style={{ color: 'var(--foreground)' }}>
-          Hi, Im <span className="text-accent">Adimas Farhan Putranto</span>
-        </h1>
-        <p className="text-lg md:text-xl font-medium text-gray-700 dark:text-gray-300">
+        <motion.h1
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }} // Directly define ease as string literal
+          className="text-4xl md:text-5xl font-extrabold mb-3 leading-tight"
+          style={{ color: 'var(--foreground)' }}
+        >
+          Hi, I'm <span className="text-accent">Adimas Farhan Putranto</span>
+        </motion.h1>
+
+        {/* Tagline 1 dengan Animasi Fade-in */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8, duration: 0.6, ease: "easeOut" }} // Directly define ease as string literal
+          className="text-lg md:text-xl font-medium text-gray-700 dark:text-gray-300"
+        >
           Informatics Engineering | Politeknik Negeri Jakarta
-        </p>
-           <p className="text-lg md:text-xl font-medium text-gray-700 dark:text-gray-300">
-         Mobile Developer Cohort | Bangkit Academy led by Google, Tokopedia, Gojek, & Traveloka
-        </p>
+        </motion.p>
         
+        {/* Tagline 2 dengan Animasi Fade-in yang berurutan */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.2, duration: 0.6, ease: "easeOut" }} // Directly define ease as string literal
+          className="text-lg md:text-xl font-medium text-gray-700 dark:text-gray-300"
+        >
+          Mobile Developer Cohort | Bangkit Academy led by Google, Tokopedia, Gojek, & Traveloka
+        </motion.p>
       </section>
 
       {/* About Me Section */}
@@ -158,57 +171,54 @@ export default function Home() {
                style={{ backgroundColor: 'var(--card-background)', boxShadow: `0 8px 24px var(--card-shadow)` }}>
         <h2 className="text-3xl font-bold mb-5" style={{ color: 'var(--foreground)' }}>About Me</h2>
         <p className="text-base md:text-lg" style={{ color: 'var(--foreground)' }}>
-          Im a passionate developer with a strong focus on building intuitive and performant web and mobile applications. My journey involves crafting delightful user experiences and solving real-world challenges through elegant code. I thrive on learning new technologies and constantly pushing the boundaries of whats possible.
+          I'm a passionate developer with a strong focus on building intuitive and performant web and mobile applications. My journey involves crafting delightful user experiences and solving real-world challenges through elegant code. I thrive on learning new technologies and constantly pushing the boundaries of what's possible.
         </p>
       </section>
 
       {/* Projects Section */}
-      <section className="mb-24 relative overflow-hidden"> {/* TAMBAH: overflow-hidden untuk mencegah animasi keluar */}
+      <section className="mb-24 relative overflow-hidden">
         <h2 className="text-3xl font-bold mb-8 text-center" style={{ color: 'var(--foreground)' }}>My Projects</h2>
         
-        {/* GUNAKAN AnimatePresence untuk animasi keluar/masuk */}
         <AnimatePresence initial={false} mode="wait" custom={direction}>
           <motion.div
-            key={startIndex} // Key berubah saat startIndex berubah, memicu animasi
+            key={startIndex}
             variants={cardVariants}
             initial="enter"
             animate="center"
             exit="exit"
-            custom={direction} // Pass custom prop 'direction'
+            custom={direction}
             transition={{
-              x: { type: "spring", stiffness: 300, damping: 30 }, // Animasi geser
-              opacity: { duration: 0.2 }, // Animasi pudar
+              x: { type: "spring", stiffness: 300, damping: 30 },
+              opacity: { duration: 0.2 },
             }}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
-           {visibleProjects.map((project) => (
-  <div
-    key={project.id}
-    className="p-7 rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300 ease-in-out flex flex-col justify-between"
-    style={{ backgroundColor: 'var(--card-background)', boxShadow: `0 8px 24px var(--card-shadow)`, minHeight: '320px' }} // <- Set tinggi minimum agar seragam
-  >
-    <div>
-      <h3 className="text-2xl font-bold mb-2" style={{ color: 'var(--foreground)' }}>{project.title}</h3>
-      <p className="text-gray-700 dark:text-gray-400 mb-4">
-        {project.description || "No description provided."}
-      </p>
-    </div>
-    
-    <div className="flex flex-wrap gap-4 mt-auto">
-
-      {project.repoLink ? (
-        <a href={project.repoLink} className="inline-block px-5 py-2 rounded-lg font-semibold border-2 border-accent whitespace-nowrap" style={{ color: 'var(--accent)' }} target="_blank" rel="noopener noreferrer">
-          GitHub
-        </a>
-      ) : (
-        <span className="inline-block px-5 py-2 rounded-lg font-semibold text-gray-400 border border-gray-300 dark:border-gray-600 cursor-not-allowed">
-          No Repo
-        </span>
-      )}
-    </div>
-  </div>
-))}
-
+            {visibleProjects.map((project) => (
+              <div
+                key={project.id}
+                className="p-7 rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300 ease-in-out flex flex-col justify-between"
+                style={{ backgroundColor: 'var(--card-background)', boxShadow: `0 8px 24px var(--card-shadow)`, minHeight: '320px' }}
+              >
+                <div>
+                  <h3 className="text-2xl font-bold mb-2" style={{ color: 'var(--foreground)' }}>{project.title}</h3>
+                  <p className="text-gray-700 dark:text-gray-400 mb-4">
+                    {project.description || "No description provided."}
+                  </p>
+                </div>
+                
+                <div className="flex flex-wrap gap-4 mt-auto">
+                  {project.repoLink ? (
+                    <a href={project.repoLink} className="inline-block px-5 py-2 rounded-lg font-semibold border-2 border-accent whitespace-nowrap" style={{ color: 'var(--accent)' }} target="_blank" rel="noopener noreferrer">
+                      GitHub
+                    </a>
+                  ) : (
+                    <span className="inline-block px-5 py-2 rounded-lg font-semibold text-gray-400 border border-gray-300 dark:border-gray-600 cursor-not-allowed">
+                      No Repo
+                    </span>
+                  )}
+                </div>
+              </div>
+            ))}
           </motion.div>
         </AnimatePresence>
 
@@ -277,7 +287,7 @@ export default function Home() {
               className="block rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-all duration-300 ease-in-out group"
               style={{ boxShadow: `0 8px 24px var(--card-shadow)` }}
             >
-              <div className="relative w-full h-64 md:h-72 lg:h-80 xl:h-96 bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
+              <div className="relative w-full aspect-[3/2] bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
                 <Image
                   src={cert.image}
                   alt={cert.name}
@@ -311,13 +321,13 @@ export default function Home() {
         <p className="mb-3 text-lg">
           Have an exciting project or just want to connect? Feel free to reach out!
         </p>
-        <p>
+        <p className="mb-2">
           Email: <a className="text-accent font-semibold hover:underline" href="mailto:admsfarhan@gmail.com">admsfarhan@gmail.com</a>
         </p>
         <p>
           LinkedIn: <a className="text-accent font-semibold hover:underline" href="https://www.linkedin.com/in/adimas-farhan-76797824b/" target="_blank" rel="noopener noreferrer">linkedin.com/adimasfarhan</a>
         </p>
-          <p>
+        <p>
           Github: <a className="text-accent font-semibold hover:underline" href="https://github.com/Admushh/" target="_blank" rel="noopener noreferrer">https://github.com/Admushh</a>
         </p>
       </section>

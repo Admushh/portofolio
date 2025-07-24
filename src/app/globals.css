@@ -1,10 +1,12 @@
 @import "tailwindcss";
 
+/* Define accent-rgb for consistent use in custom CSS (e.g., animations) */
 :root {
   /* Light Mode */
   --background: #fdfdfe; /* Very subtle off-white */
   --foreground: #212529; /* Dark charcoal for text */
   --accent: #20c997; /* Vibrant teal/green */
+  --accent-rgb: 32, 201, 151; /* RGB values for the accent color: 32, 201, 151 */
   --card-background: #ffffff;
   --card-shadow: rgba(0, 0, 0, 0.05);
 }
@@ -22,6 +24,7 @@
     --background: #1a1a1a; /* Dark grey */
     --foreground: #e9ecef; /* Light grey for text */
     --accent: #2ecc71; /* Slightly brighter green for dark mode contrast */
+    --accent-rgb: 46, 204, 113; /* RGB values for dark mode accent: 46, 204, 113 */
     --card-background: #2c2c2c;
     --card-shadow: rgba(0, 0, 0, 0.3);
   }
@@ -57,3 +60,25 @@ a:hover {
   color: var(--accent); /* Maintain color, but maybe add underline or different effect */
   text-decoration: underline;
 }
+
+/* --- CUSTOM ANIMATIONS --- */
+
+/* Keyframe for the halo pulse effect on the profile picture */
+@keyframes halo-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(var(--accent-rgb), 0.7); /* Start with a semi-transparent accent-colored shadow */
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(var(--accent-rgb), 0); /* Expand and fade out the shadow */
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(var(--accent-rgb), 0); /* Return to original state */
+  }
+}
+
+/* Tailwind class to apply the halo pulse animation */
+.animate-halo-pulse {
+  animation: halo-pulse 2s infinite; /* Apply the animation: name, duration (2s), and repeat infinitely */
+}
+
+/* --- END CUSTOM ANIMATIONS --- */
