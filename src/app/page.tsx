@@ -64,13 +64,19 @@ const allCertificates = [
     id: 4,
     name: "Belajar Pengembangan Aplikasi Android Intermediate",
     image: "/sertif4.jpg",
-    verifyLink: "https://www.example.com/verify/cert101"
+    verifyLink: "https://www.linkedin.com/in/adimas-farhan-76797824b/"
   },
   {
     id: 5,
     name: "Kepersertaan dan kelulusan program Studi Independen",
     image: "/sertif5.jpg",
-    verifyLink: "https://www.example.com/verify/cert101"
+    verifyLink: "https://www.linkedin.com/in/adimas-farhan-76797824b/"
+  },
+    {
+    id: 6,
+    name: "Associate Data Science by Digitalent",
+    image: "/sertif6.jpg",
+    verifyLink: "https://www.linkedin.com/in/adimas-farhan-76797824b/"
   },
 ];
 
@@ -273,21 +279,23 @@ export default function Home() {
         </div>
       </section>
 
-      {/* My Certificates Section */}
+           {/* My Certificates Section */}
       <section className="mb-24 p-6 rounded-xl shadow-md"
                style={{ backgroundColor: 'var(--card-background)', boxShadow: `0 8px 24px var(--card-shadow)` }}>
         <h2 className="text-3xl font-bold mb-8 text-center" style={{ color: 'var(--foreground)' }}>My Certificates</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8">
           {allCertificates.map((cert) => (
-            <a
+            <div
               key={cert.id}
-              href={cert.verifyLink || cert.image}
-              target="_blank"
-              rel="noopener noreferrer"
               className="block rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-all duration-300 ease-in-out group"
               style={{ boxShadow: `0 8px 24px var(--card-shadow)` }}
             >
-              <div className="relative w-full aspect-[3/2] bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
+              <a
+                href={cert.verifyLink || cert.image}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative w-full aspect-[3/2] bg-gray-100 dark:bg-gray-800 flex items-center justify-center block"
+              >
                 <Image
                   src={cert.image}
                   alt={cert.name}
@@ -295,24 +303,24 @@ export default function Home() {
                   objectFit="contain"
                   className="transition-transform duration-330 group-hover:scale-105"
                 />
-              </div>
+              </a>
               <div className="p-4 bg-white dark:bg-gray-700 flex flex-col items-start min-h-[5.5rem]">
                 <h3 className="text-xl font-semibold mb-2" style={{ color: 'var(--foreground)' }}>{cert.name}</h3>
                 {cert.verifyLink && (
-                    <a
-                      href={cert.verifyLink}
-                      className="text-sm text-accent hover:underline"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                        View Certificate
-                    </a>
+                  <a
+                    href={cert.verifyLink}
+                    className="text-sm text-accent hover:underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    View Certificate
+                  </a>
                 )}
               </div>
-            </a>
+            </div>
           ))}
         </div>
-      </section>
+      </section> {/* ✅ Tambahkan penutup section di sini */}
 
       {/* Contact Me Section */}
       <section className="text-center p-6 rounded-xl shadow-md"
@@ -337,5 +345,5 @@ export default function Home() {
         <p>&copy; {new Date().getFullYear()} Adimas Farhan Putranto. All rights reserved.</p>
       </footer>
     </main>
-  )
+  );
 }
