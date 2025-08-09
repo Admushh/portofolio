@@ -148,7 +148,7 @@ export default function Home() {
           className="text-4xl md:text-5xl font-extrabold mb-3 leading-tight"
           style={{ color: 'var(--foreground)' }}
         >
-          Hi, I'm <span className="text-accent">Adimas Farhan Putranto</span>
+          Hi, Im <span className="text-accent">Adimas Farhan Putranto</span>
         </motion.h1>
 
         {/* Tagline 1 dengan Animasi Fade-in */}
@@ -177,7 +177,7 @@ export default function Home() {
                style={{ backgroundColor: 'var(--card-background)', boxShadow: `0 8px 24px var(--card-shadow)` }}>
         <h2 className="text-3xl font-bold mb-5" style={{ color: 'var(--foreground)' }}>About Me</h2>
         <p className="text-base md:text-lg" style={{ color: 'var(--foreground)' }}>
-          I'm a passionate developer with a strong focus on building intuitive and performant web and mobile applications. My journey involves crafting delightful user experiences and solving real-world challenges through elegant code. I thrive on learning new technologies and constantly pushing the boundaries of what's possible.
+          Im a passionate developer with a strong focus on building intuitive and performant web and mobile applications. My journey involves crafting delightful user experiences and solving real-world challenges through elegant code. I thrive on learning new technologies and constantly pushing the boundaries of whats possible.
         </p>
       </section>
 
